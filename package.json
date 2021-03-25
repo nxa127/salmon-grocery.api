@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bluebird": "^3.5.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -21,6 +22,7 @@
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
     "graphql-upload": "^11.0.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.1"
   },
   "devDependencies": {

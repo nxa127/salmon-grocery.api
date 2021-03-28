@@ -16,4 +16,9 @@ module.exports =  /* GraphQL */ `
     createRate(productId: String, rate: Int, comment: String): Boolean
     removeRate(id: String): Boolean
   }
+
+  schema {
+    query: Query
+    mutation: Mutation
+  }
 `

@@ -27,8 +27,8 @@ module.exports = /* GraphQL */ `
     id: String
     productId: String
     userId: String
-    rating: Int
-    feedback: String
+    rate: Int
+    comment: String
     createdAt: String
   }
 

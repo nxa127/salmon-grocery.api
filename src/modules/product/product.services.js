@@ -1,16 +1,16 @@
 const Product = require("./product.model");
 
 module.exports = () => ({
-  getProducts: () => {
-    const products = Product.find().sort({
+  getProducts: async () => {
+    const products = await Product.find().sort({
       createdAt: -1
     })
 
     return products;
   },
-  getProduct: (productId) => {
+  getProduct: async (productId) => {
     try {
-      const product = Product.find({
+      const product = await Product.find({
         _id: productId
       })
 
@@ -19,7 +19,7 @@ module.exports = () => ({
       return err
     }
   },
-  createProduct: ({ category, subCategory, productName, material = '', size = '', color = '', sex = '', price, sale = 0, images = [], inStock = 0, onSales = false }) => {
+  createProduct: async ({ category, subCategory, productName, material = '', size = '', color = '', sex = '', price, sale = 0, images = [], inStock = 0, onSales = false }) => {
     try {
       await Product.create({
         category,
@@ -43,9 +43,9 @@ module.exports = () => ({
       return false
     }
   },
-  updateProduct: ({ productId, category, subCategory, productName, material = '', size = '', color = '', sex = '', price, sale = 0, images = [], inStock = 0, onSales = false }) => {
+  updateProduct: async ({ productId, category, subCategory, productName, material = '', size = '', color = '', sex = '', price, sale = 0, images = [], inStock = 0, onSales = false }) => {
     try {
-      const product = Product.findOne({ _id: productId });
+      const product = await Product.findOne({ _id: productId });
       if (!product) {
         throw new Error('Product not found')
       }

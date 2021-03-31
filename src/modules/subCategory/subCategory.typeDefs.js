@@ -17,4 +17,4 @@ module.exports = /* GraphQL */ `
     query: Query
     mutation: Mutation
   }
-`
+`;

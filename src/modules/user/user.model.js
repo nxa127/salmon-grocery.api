@@ -7,11 +7,11 @@ const User = new mongoose.Schema(
     email: { type: String, reuqire: true, unique: true },
     address: String,
     phone: { type: String, unique: true },
-    avatar: String
+    avatar: String,
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
 module.exports = mongoose.model('User', User);

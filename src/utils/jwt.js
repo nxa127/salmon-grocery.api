@@ -11,7 +11,7 @@ module.exports = {
           return reject(err);
         }
         return resolve(token);
-      })
+      }),
     ),
   verify: token =>
     new Promise((resolve, reject) =>
@@ -20,7 +20,7 @@ module.exports = {
           return reject(err);
         }
         return resolve(data);
-      })
+      }),
     ),
-  decode: token => jwt.decode(token)
+  decode: token => jwt.decode(token),
 };

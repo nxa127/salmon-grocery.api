@@ -24,5 +24,5 @@ module.exports = {
         .compare(str, src)
         .then(res => resolve(res))
         .catch(e => reject(e));
-    })
+    }),
 };

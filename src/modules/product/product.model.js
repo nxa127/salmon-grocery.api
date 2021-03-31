@@ -14,11 +14,11 @@ const Product = new mongoose.Schema(
     description: String,
     inStock: { type: Number, min: 0, default: 1 },
     images: Array[String],
-    onSales: { type: Boolean, default: false }
+    onSales: { type: Boolean, default: false },
   },
   {
-    timestamps: true
-  }
-)
+    timestamps: true,
+  },
+);
 
-module.exports = mongoose.model('Product', Product)
+module.exports = mongoose.model('Product', Product);

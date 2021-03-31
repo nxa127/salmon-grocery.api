@@ -23,7 +23,7 @@ module.exports = () => ({
       await createUser({
         username,
         password: hashedPassword,
-        email
+        email,
       });
 
       return true;
@@ -46,5 +46,5 @@ module.exports = () => ({
     }
 
     return jwt.sign({ userId: user.id });
-  }
+  },
 });

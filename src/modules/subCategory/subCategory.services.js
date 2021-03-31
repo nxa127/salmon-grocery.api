@@ -5,13 +5,13 @@ module.exports = () => ({
     try {
       await SubCategory.create({
         name,
-        categoryId
-      })
+        categoryId,
+      });
 
-      return true
+      return true;
     } catch (err) {
-      console.log('Create subCategory failed:', err.reason)
-      return false
+      console.log('Create subCategory failed:', err.reason);
+      return false;
     }
   },
   updateSubCategory: async ({ name, categoryId }) => {
@@ -19,18 +19,18 @@ module.exports = () => ({
       const subCategory = await SubCategory.findOne({ name });
 
       if (!subCategory) {
-        throw new Error('subCategory not found')
+        throw new Error('subCategory not found');
       }
 
       await subCategory.update({
         name,
-        categoryId
-      })
+        categoryId,
+      });
 
-      return true
+      return true;
     } catch (err) {
       console.log('Update subCategory failed:', err.reason);
-      return false
+      return false;
     }
-  }
-})
+  },
+});

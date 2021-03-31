@@ -1,9 +1,9 @@
-module.exports =  /* GraphQL */ `
+module.exports = /* GraphQL */ `
   type Rate {
-    id: String,
-    productId: String,
-    userId: String,
-    rate: Int,
+    id: String
+    productId: String
+    userId: String
+    rate: Int
     comment: String
   }
 
@@ -21,4 +21,4 @@ module.exports =  /* GraphQL */ `
     query: Query
     mutation: Mutation
   }
-`
+`;

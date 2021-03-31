@@ -1,12 +1,12 @@
 const Rate = require('./rate.model');
 
 module.exports = () => ({
-  getUserRates: async (userId) => {
+  getUserRates: async userId => {
     const rates = await Rate.find({ userId });
 
     return rates;
   },
-  getProductRates: async (productId) => {
+  getProductRates: async productId => {
     const rates = await Rate.find({ productId });
 
     return rates;
@@ -17,13 +17,13 @@ module.exports = () => ({
         userId,
         productId,
         rate,
-        comment
-      })
+        comment,
+      });
 
-      return true
+      return true;
     } catch (err) {
-      console.log(`Create rate for product ${productId} from user ${userId} failed: ${err.reason}`)
+      console.log(`Create rate for product ${productId} from user ${userId} failed: ${err.reason}`);
       return false;
     }
-  }
-})
+  },
+});

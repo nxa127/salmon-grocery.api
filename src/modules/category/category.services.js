@@ -6,7 +6,7 @@ const Promise = require('bluebird');
 module.exports = () => ({
   getCategories: async () => {
     const categories = await Category.find().sort({
-      createAt: -1,
+      createdAt: -1,
     });
 
     return categories;

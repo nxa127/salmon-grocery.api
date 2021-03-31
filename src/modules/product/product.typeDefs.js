@@ -5,7 +5,7 @@ module.exports = /* GraphQL */ `
     userId: String
     rate: Int
     comment: String
-    createAt: String
+    createdAt: String
   }
 
   type Product {
@@ -26,7 +26,7 @@ module.exports = /* GraphQL */ `
     inStock: Int
     images: [String]
     onSales: Boolean
-    createAt: String
+    createdAt: String
   }
 
   type Query {

@@ -8,5 +8,5 @@
   "jsxBracketSameLine": true,
   "parser": "babel",
   "semi": true,
-  "quotes": true
+  "bracketSpacing": true
 }

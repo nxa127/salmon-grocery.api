@@ -1,7 +1,7 @@
 const SubCategory = require('./subCategory.model');
 
 module.exports = () => ({
-  createSubCategory: async ({ name = '', categoryId }) => {
+  create: async ({ name, categoryId }) => {
     try {
       await SubCategory.create({
         name,
@@ -14,7 +14,7 @@ module.exports = () => ({
       return false;
     }
   },
-  updateSubCategory: async ({ name, categoryId }) => {
+  update: async ({ name, categoryId }) => {
     try {
       const subCategory = await SubCategory.findOne({ name });
 

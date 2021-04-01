@@ -48,11 +48,11 @@ module.exports = /* GraphQL */ `
   type Query {
     login(username: String, password: String): String
     getCurrentUser: User
-    checkToken(token: String): Boolean
   }
 
   type Mutation {
     register(username: String, password: String, email: String): Boolean
+    update(password: String, email: String, address: String, phone: String, avatar: String): Boolean
   }
 
   schema {

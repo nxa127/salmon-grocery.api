@@ -13,7 +13,7 @@ const createUser = async ({ username, password, email }) => {
 };
 
 module.exports = () => ({
-  register: async (username, password, email) => {
+  register: async ({ username, password, email }) => {
     if (password.length < 6) {
       throw new Error('Password must be longer than 6 characters');
     }
@@ -32,6 +32,7 @@ module.exports = () => ({
       return false;
     }
   },
+
   login: async (username, password) => {
     const user = await User.findOne({ username });
 
@@ -46,5 +47,36 @@ module.exports = () => ({
     }
 
     return jwt.sign({ userId: user.id });
+  },
+
+  getUserInfo: async userId => {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return user;
+  },
+
+  update: async ({ userId, password, email, address, phone, avatar }) => {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+    try {
+      await user.update({
+        password,
+        email,
+        address,
+        phone,
+        avatar,
+      });
+      return true;
+    } catch (err) {
+      console.log('Update user failed:', err.reason);
+      return false;
+    }
   },
 });

@@ -1,7 +1,7 @@
 const Order = require('./order.model');
 
 module.exports = () => ({
-  getOrders: async userId => {
+  getUserOrders: async userId => {
     const orders = await Order.find({ buyer: userId }).sort({
       createdAt: -1,
     });

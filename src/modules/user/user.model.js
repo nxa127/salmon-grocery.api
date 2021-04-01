@@ -8,6 +8,7 @@ const User = new mongoose.Schema(
     address: String,
     phone: { type: String, unique: true },
     avatar: String,
+    lastTokenCreatedAt: Date,
   },
   {
     timestamps: true,

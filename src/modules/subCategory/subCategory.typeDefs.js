@@ -1,12 +1,14 @@
 module.exports = /* GraphQL */ `
   type SubCategory {
-    id: String,
+    id: String
     categoryId: String
     name: String
     createdAt: String
-  }  
+  }
 
-  type Query {}
+  type Query {
+    getSubCategories: [SubCategory]
+  }
 
   type Mutation {
     create(name: String, categoryId: String): Boolean

@@ -20,7 +20,7 @@ module.exports = () => ({
 
     return category;
   },
-  createCategory: async ({ name = '', subCategories = [] }) => {
+  create: async ({ name = '', subCategories = [] }) => {
     try {
       const _category = await Category.create({ name });
 

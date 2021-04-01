@@ -9,8 +9,8 @@ const typeDefs = require('./subCategory.typeDefs');
 const IS_DEV = process.env.IS_DEV === 'true';
 
 module.exports = async ({ api }) => {
-  const SubCategoryService = await initServices();
-  const SubCategoryResolvers = await initResolvers({ SubCategoryService });
+  const SubCategoryServices = await initServices();
+  const SubCategoryResolvers = await initResolvers({ SubCategoryServices });
 
   const schema = makeExecutableSchema({
     typeDefs,
@@ -24,5 +24,6 @@ module.exports = async ({ api }) => {
       graphiql: IS_DEV,
     }),
   );
-  return;
+
+  return { SubCategoryServices };
 };

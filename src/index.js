@@ -5,6 +5,11 @@ const http = require('http');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const initCategoryModule = require('./modules/category');
+const initSubCategoryModule = require('./modules/subCategory');
+
+const clientTokenMiddleware = require('./middlewares/client.token');
+
 const PORT = process.env.PORT || '3000';
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/_test';
 
@@ -14,6 +19,8 @@ const main = async () => {
   app.use(cors());
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
+  app.use(clientTokenMiddleware);
 
   await mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
@@ -27,9 +34,8 @@ const main = async () => {
 
   const api = express.Router();
 
-  api.get('/generate_204', (req, res) => {
-    res.sendStatus(204);
-  });
+  const { SubCategoryServices } = await initSubCategoryModule({ api });
+  await initCategoryModule({ api, SubCategoryServices });
 
   app.use('/api', api);
 

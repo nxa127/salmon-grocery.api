@@ -1,8 +1,8 @@
-module.exports = async ({ SubCategoryService }) => ({
+module.exports = async ({ SubCategoryServices }) => ({
   Query: {},
-  Muation: {
-    create: (_, { name, categoryId }) => SubCategoryService.create({ name, categoryId }),
-    update: (_, { name, categoryId }) => SubCategoryService.update({ name, categoryId }),
+  Mutation: {
+    create: (_, { name, categoryId }) => SubCategoryServices.create({ name, categoryId }),
+    update: (_, { name, categoryId }) => SubCategoryServices.update({ name, categoryId }),
   },
   SubCategory: {
     id: subCategory => subCategory._id,

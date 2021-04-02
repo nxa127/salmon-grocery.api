@@ -51,7 +51,7 @@ module.exports = () => ({
 
       return true;
     } catch (err) {
-      console.log('Create product failed:', err.reason);
+      console.log('Create product failed:', err);
 
       return false;
     }
@@ -94,7 +94,7 @@ module.exports = () => ({
 
       return true;
     } catch (err) {
-      console.log('Update product failed:', err.reason);
+      console.log('Update product failed:', err);
 
       return false;
     }

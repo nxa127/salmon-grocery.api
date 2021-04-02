@@ -75,7 +75,7 @@ module.exports = () => ({
       });
       return true;
     } catch (err) {
-      console.log('Update user failed:', err.reason);
+      console.log('Update user failed:', err);
       return false;
     }
   },

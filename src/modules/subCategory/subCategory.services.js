@@ -1,8 +1,8 @@
 const SubCategory = require('./subCategory.model');
+const Category = require('../category/category.model');
 
 module.exports = () => ({
   getSubCategories: async categoryId => {
-    console.log(categoryId);
     const subCategories = await SubCategory.find({ categoryId }).sort({
       createdAt: -1,
     });
@@ -12,6 +12,12 @@ module.exports = () => ({
 
   create: async ({ name, categoryId }) => {
     try {
+      const category = await Category.findById(categoryId);
+
+      if (!category) {
+        throw new Error('Category not found');
+      }
+
       await SubCategory.create({
         name,
         categoryId,
@@ -19,7 +25,7 @@ module.exports = () => ({
 
       return true;
     } catch (err) {
-      console.log('Create subCategory failed:', err.reason);
+      console.log('Create subCategory failed:', err);
       return false;
     }
   },
@@ -39,7 +45,7 @@ module.exports = () => ({
 
       return true;
     } catch (err) {
-      console.log('Update subCategory failed:', err.reason);
+      console.log('Update subCategory failed:', err);
       return false;
     }
   },

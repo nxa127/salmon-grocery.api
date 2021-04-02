@@ -49,7 +49,7 @@ module.exports = () => ({
       });
       return true;
     } catch (err) {
-      console.log('Create order failed:', err.reason);
+      console.log('Create order failed:', err);
       return false;
     }
   },
@@ -97,7 +97,7 @@ module.exports = () => ({
         canceledAt,
       });
     } catch (err) {
-      console.log('Update order status failed:', err.reason);
+      console.log('Update order status failed:', err);
       return false;
     }
   },

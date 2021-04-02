@@ -20,7 +20,7 @@ module.exports = /* GraphQL */ `
 
   type Mutation {
     create(name: String, subCategories: [String]!): Boolean
-    update(name: String, subCategories: [String]): Boolean
+    update(categoryId: String, name: String, subCategories: [String]): Boolean
   }
 
   schema {

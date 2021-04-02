@@ -5,7 +5,8 @@ module.exports = async ({ CategoryServices, SubCategoryServices }) => ({
   },
   Mutation: {
     create: (_, { name, subCategories }) => CategoryServices.create({ name, subCategories }),
-    update: (_, { name, subCategories }) => CategoryServices.update({ name, subCategories }),
+    update: (_, { categoryId, name, subCategories }) =>
+      CategoryServices.update({ categoryId, name, subCategories }),
   },
   Category: {
     id: category => category._id,

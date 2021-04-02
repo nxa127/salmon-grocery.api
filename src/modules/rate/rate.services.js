@@ -22,7 +22,7 @@ module.exports = () => ({
 
       return true;
     } catch (err) {
-      console.log(`Create rate for product ${productId} from user ${userId} failed: ${err.reason}`);
+      console.log(`Create rate for product ${productId} from user ${userId} failed:`, err);
       return false;
     }
   },

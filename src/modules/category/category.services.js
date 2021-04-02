@@ -37,25 +37,27 @@ module.exports = () => ({
 
       return true;
     } catch (err) {
-      console.log('Create category failed:', err.reason);
+      console.log('Create category failed:', err);
       return false;
     }
   },
-  update: async ({ name, subCategories = [] }) => {
+  update: async ({ categoryId, name, subCategories = [] }) => {
     try {
-      const _category = await Category.findOne({ name });
+      const _category = await Category.findById(categoryId);
 
       if (!_category) {
         throw new Error('Category not found');
       }
-      const _subCategories = await SubCategory.find({ categoryId: _category._id });
+
+      const _subCategories = await SubCategory.find({ categoryId });
 
       await Promise.map(_subCategories, async subCategory => {
         const _subCategory = await SubCategory.findOne({ name: subCategory.name });
-
-        await _subCategory.update({
-          categoryId: '',
-        });
+        if (_subCategory) {
+          await _subCategory.update({
+            categoryId: '',
+          });
+        }
       });
 
       await Promise.map(subCategories, async subCategory => {
@@ -64,18 +66,22 @@ module.exports = () => ({
         if (!_subCategory) {
           await SubCategory.create({
             name: subCategory,
-            categoryId: _category._id,
+            categoryId: categoryId,
+          });
+        } else {
+          await _subCategory.update({
+            categoryId,
           });
         }
-
-        await _subCategory.update({
-          categoryId: _category._id,
-        });
-
-        return true;
       });
+
+      await _category.update({
+        name,
+      });
+
+      return true;
     } catch (err) {
-      console.log('Update Category failed:', err.reason);
+      console.log('Update Category failed:', err);
       return false;
     }
   },
